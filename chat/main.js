@@ -33,7 +33,7 @@ $(document).ready(function(){
     });
 
     var connect = function() {
-        window.socket = socket = new WebSocket("ws://localhost:8801");
+        window.socket = socket = new WebSocket("ws://idweb.whn.se/chat/server");
 
         socket.onmessage = function(event) {
             // When we receive a message add it to the log

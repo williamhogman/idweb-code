@@ -13,7 +13,7 @@ var broadcast = function(message) {
 };
 
 var server = ws.createServer(function(conn) {
-    var ip = conn.socket.remoteAddress;
+    var ip = conn.headers["x-real-ip"] || conn.socket.remoteAddress;
     // Send the backlog
     buffer.forEach(function(x){
         conn.sendText(x);

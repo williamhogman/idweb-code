@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+}
+
+body, html {
+  padding: 0;
+  margin: 0;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#chatlog {
+  padding: 10px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+#message_form {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  outline: none;
+  border: 1px dashed;
+}

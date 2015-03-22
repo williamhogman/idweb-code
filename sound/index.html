@@ -1,0 +1,65 @@
+<!doctype html>
+
+<head>
+  <title>Lets do it!</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>  
+  <script src="//cdn.peerjs.com/0.3/peer.js"></script>
+  <script src="cheats.js"></script>  
+  <script src="instrument.js"></script>
+  <script src="main.js"></script>
+
+  
+  <button id="go">Go!</button>
+  <button id="stop">Stop</button>
+  <input id="freq" type="range" min="20" max="5000" step="25" value="400" />
+
+  <style>
+    #surface {
+
+    height: 300px;
+    width: 1000px;
+    display: block;
+    }
+
+    canvas {
+    image-rendering: optimizeSpeed;             // Older versions of FF
+    image-rendering: -moz-crisp-edges;          // FF 6.0+
+    image-rendering: -webkit-optimize-contrast; // Safari
+    image-rendering: -o-crisp-edges;            // OS X & Windows Opera (12.02+)
+    image-rendering: pixelated;                 // Awesome future-browsers
+    -ms-interpolation-mode: nearest-neighbor;   // IE
+    }
+  </style>
+  
+  <canvas id="surface" >
+  </canvas>
+
+  <div id="identity">
+  </div>
+
+  <script>
+    $(document).ready(function(){
+
+    $("#go").click(start);
+    $("#stop").click(stop);
+
+    $("#freq").on('input', function(){
+
+    setFrequency(Math.log($("#freq").val()));
+    
+    })
+
+
+    // Actually, using a slider sucks!
+    $("#surface").on('mousemove', function(event){
+        window.frequency = event.clientX;
+        window.volume = (event.clientY/300/2);
+        setFrequency(event.clientX);
+        setVolume((event.clientY/300/2));
+    })
+
+    });
+
+  </script>
+  
+</div>
